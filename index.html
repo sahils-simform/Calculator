@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href = "style.css" >
+    <link rel="stylesheet" href = "script.js" >
+</head>
+
+<body>
+    <div class="container">
+        <div class="display">
+            <input id="screen" type="text" placeholder="0">
+        </div>
+
+        <div class="btns">
+            <div class="row">
+                <button onclick="deg()" id="degree">DEG</button> 
+                <button onclick="rad()" id="radian">RAD</button>     
+            </div>
+
+            <div class="row">
+                <button onclick="memClear()" class = "memClear" id=" mClear">MC</button>
+                <button onclick="memRecall()" class = "memClear" id=" mRecall">MR</button>
+                <button onclick="memAdd()" class = "memClear" id=" mAdd">M+</button>
+                <button onclick="memSub()" class = "memClear" id=" mSub">M-</button>
+                <button onclick="memStore()" class = "memClear" id=" mStore">MS</button>
+            </div>    
+
+            <div class="row">
+                <button class = "trigono" style="width: 220px;" > Trigonometry</button> 
+                <div class="block1">
+                    <div class="first">
+                        <div class="btn2" id="trichange" >2<sup>nd</sup></div>
+                        <div class="btn2" id="sin">sin</div>
+                        <div class="btn2" id="cos"> cos</div>
+                        <div class="btn2" id="tan">tan</div>
+                    </div>
+                    <div class="second">
+                        <div class="btn2" id="trihyp">hyp</div>
+                        <div class="btn2" id="csc">csc</div>
+                        <div class="btn2" id="sec">sec</div>
+                        <div class="btn2" id="cot">cot</div>
+                    </div>
+                </div>
+                <button class = "func" style="width: 219px;"> Function</button> 
+            </div>
+                <div class="block1">
+                    <div class="first">
+                        <div class="btn2" id="trichange" >2<sup>nd</sup></div>
+                        <div class="btn2" id="sin">sin</div>
+                        <div class="btn2" id="cos"> cos</div>
+                        <div class="btn2" id="tan">tan</div>
+                    </div>
+                    <div class="second">
+                        <div class="btn2" id="trihyp">hyp</div>
+                        <div class="btn2" id="csc">csc</div>
+                        <div class="btn2" id="sec">sec</div>
+                        <div class="btn2" id="cot">cot</div>
+                    </div>
+                </div>
+               
+            <div class="row">
+                <button onclick="otherOption()" class="otherOption">2 <sup>nd</sup></button> 
+                <button onclick="pi()" id="pi">π</button> 
+                <button onclick="e_square()" id ="exponential">e</button>
+                <button class="ce" id="allClear" onclick="backspc()">CE</button>
+                <button class="ce" id="backspace" onclick="backspc()">⬅️ </button>
+            </div>
+
+            <div class="row">
+                <button onclick="square()" id="square">x <sup>2</sup></button>
+                <button onclick="inverse()" id="inverse">1/x</button>
+                <button onclick="absolute()" id="absolute">|x|</button>
+                <button onclick="exp()" id="exp">exp</button>
+                <button onclick="mod()" class="btn operation" id="mod">mod</button>
+            </div>    
+
+            <div class="row">
+                <button onclick="sqrt()" id="root">√</button>
+                <button class="btn operation">(</button>
+                <button class="btn operation">)</button>
+                <button onclick="fact()" id="facto">n!</button>
+                <button class="btn operation">/</button>
+            </div>
+
+            <div class="row">
+                <button onclick="raisTo()" id="raisTo">x <sup>y</sup></button>
+                <button class="btn number">7</button>
+                <button class="btn number">8</button>
+                <button class="btn number">9</button>
+                <button class="btn operation">*</button>
+            </div>
+
+            <div class="row">
+                <button onclick="raisToTen()">10 <sup>x</sup> </button>
+                <button class="btn number">4</button>
+                <button class="btn number">5</button>
+                <button class="btn number">6</button>
+                <button class="btn operation">-</button>
+            </div>
+
+            <div class="row">
+                <button onclick="log()" id="log">log</button>
+                <button class="btn number">1</button>
+                <button class="btn number">2</button>
+                <button class="btn number">3</button>
+                 <button class="btn operation">+</button>
+            </div>
+
+            <div class="row">
+                <button  id="ln">ln</button>
+                <button onclick="plus_minus()" id="plusMinus">+/-</button>
+                <button class="btn number">0</button>
+                <button class="btn number">.</button>
+                <button onclick="eval()" id="eval" >=</button>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+    <!-- <button onclick="sin()">sin</button>-->
+        <!--<button onclick="tan()">tan</button> -->
+        <!-- <button onclick="cos()">cos</button> -->
+    <!-- <span style="position: relative; bottom: .4em; right: .1em;">y</span>  -->
