@@ -15,7 +15,7 @@ let calcOperator;
 
 let total;
 
-const buttonNumber = (button) => {
+let buttonNumber = (button) => {
 
     operator = document.getElementsByClassName("operator");
     box = document.getElementById("box");
@@ -26,12 +26,12 @@ const buttonNumber = (button) => {
     lastButton = button;
 
     // if button is not an operator or = sign
-    if (!operators.includes(button) && button !== equal){
+    if (!operators.includes(button) && button!=equal){
         // if it is the first button clicked
         if (firstNum){
             // and it's a dot, show 0.
-            if (button === dot){
-                box.innerText = `0${dot}`;
+            if (button == dot){
+                box.innerText = "0"+dot;
             }
             // else clear box and show the number
             else {
@@ -42,9 +42,9 @@ const buttonNumber = (button) => {
         else {
 
             // return if the box value is 0
-            if (box.innerText.length === 1 && box.innerText === 0){
+            if (box.innerText.length == 1 && box.innerText == 0){
 
-                if (button === dot){
+                if (button == dot){
                     box.innerText += button;
                 }
                 return;
@@ -72,12 +72,12 @@ const buttonNumber = (button) => {
     else {
 
         // return if operator is already pressed
-        if (operatorValue != null && button === operatorValue){
+        if (operatorValue != null && button == operatorValue){
             return
         }
 
         // show minus sign if it's the first value selected and finally return
-        if (button === "-" && box.innerText === 0){
+        if (button == "-" && box.innerText == 0){
             box.innerText = button;
             firstNum = false;
             operatorValue = button
@@ -166,20 +166,20 @@ let showSelectedOperator = () => {
 
     let elements = document.getElementsByClassName("operator");
 
-    for (let i=0; i<elements.length; i+=1){
+    for (let i=0; i<elements.length; i++){
         elements[i].style.backgroundColor  = "#e68a00";
     }
 
-    if (operatorValue === "+"){
+    if (operatorValue == "+"){
         document.getElementById("plusOp").style.backgroundColor  = "#ffd11a";
     }
-    else if (operatorValue === "-"){
+    else if (operatorValue == "-"){
         document.getElementById("subOp").style.backgroundColor  = "#ffd11a";
     }
-    else if (operatorValue === "*"){
+    else if (operatorValue == "*"){
         document.getElementById("multiOp").style.backgroundColor  = "#ffd11a";
     }
-    else if (operatorValue === "/"){
+    else if (operatorValue == "/"){
         document.getElementById("divOp").style.backgroundColor  = "#ffd11a";
     }
 }
@@ -199,12 +199,14 @@ let calculate = (num1, num2, operator) => {
     else if (operator === "/"){
         total = (parseFloat)(num1)/(parseFloat)(num2)
     }
-    else if (total === box.innerText){
-            return total;
+    else {
+        if (total == box.innerText){
+            return total
         }
         else {
-            return box.innerText;
+            return box.innerText
         }
+    }
     // if total is not integer, show maximum 12 decimal places
     if (!Number.isInteger(total)){
         total = total.toPrecision(12);
@@ -214,7 +216,7 @@ let calculate = (num1, num2, operator) => {
 
 // function to clear box and reset everything
 let button_clear = () => {
-    window.location.reload();
+    window.location.reload()
 }
 
 let backspace_remove = () => {
@@ -222,7 +224,7 @@ let backspace_remove = () => {
     box = document.getElementById("box");
     let elements = document.getElementsByClassName("operator");
 
-    for (let i=0; i<elements.length; i+=1){
+    for (let i=0; i<elements.length; i++){
         elements[i].style.backgroundColor  = "#e68a00";
     }
 
@@ -232,7 +234,7 @@ let backspace_remove = () => {
     box.innerText = last_num
 
     // show 0 zero if all characters on screen are removed
-    if (box.innerText.length === 0){
+    if (box.innerText.length == 0){
         box.innerText = 0
         firstNum = true
     }
@@ -245,7 +247,7 @@ let plus_minus = () =>{
     box = document.getElementById("box");
 
     // if any operator is already pressed
-    if (typeof last_operator !== "undefined"){
+    if (typeof last_operator != "undefined"){
         if (numbers.length>0){
             // if last button pressed is an operator
             if (operators.includes(lastButton)){
@@ -256,16 +258,16 @@ let plus_minus = () =>{
                     return
                 }
                 // if the displayed text is not a just a negative sign, replace it with a negative sign
-                
+                else {
                     box.innerText = "-"
                     firstNum = false
-                
+                }
             }
             // if last button pressed is not an operator, change its sign
             else {
                 box.innerText = -box.innerText
 
-                if (numbers.length=== 1){
+                if (numbers.length==1){
                     numbers[0] = box.innerText
                 }
                 else {
@@ -277,7 +279,7 @@ let plus_minus = () =>{
     }
 
     // if displayed text is 0, replace it with a negative sign
-    if (box.innerText === 0){
+    if (box.innerText == 0){
         box.innerText = "-"
         firstNum = false
         return
@@ -288,33 +290,33 @@ let plus_minus = () =>{
 // function to calculate square root of the number currently on screen
 const square_root = () => {
     box = document.getElementById("box");
-    let squareNum = Math.sqrt(box.innerText);
-    box.innerText = squareNum;
-    numbers.push(squareNum);
+    let square_num = Math.sqrt(box.innerText);
+    box.innerText = square_num;
+    numbers.push(square_num);
 }
 
 // function to calculate the power of the number currently on screen
 const power_of = () => {
     box = document.getElementById("box");
-    let squareNum =Math.pow(box.innerText, 2);
-    box.innerText = squareNum;
-    numbers.push(squareNum);
+    let square_num =Math.pow(box.innerText, 2);
+    box.innerText = square_num;
+    numbers.push(square_num);
 }
 
 // function to calculate the division of 1 with the number currently on screen
 const division_one = () => {
     box = document.getElementById("box");
-    let squareNum = 1/box.innerText;
-    box.innerText = squareNum;
-    numbers.push(squareNum);
+    let square_num = 1/box.innerText;
+    box.innerText = square_num;
+    numbers.push(square_num);
 }
 
 // const calculateModulo = () => {
 //     box = document.getElementById("box");
 //     equal = document.getElementById("equal_sign").value;
-//     let squareNum = box.innerText;
-//     squareNum = squareNum.replace(/%/g, '/100');
-//     box.innerText = eval(squareNum) + '%';
+//     let square_num = box.innerText;
+//     square_num = square_num.replace(/%/g, '/100');
+//     box.innerText = eval(square_num) + '%';
 //     // let dividend;
 //     // let divisor;
 //     // box.innerText = dividend % divisor;
@@ -324,48 +326,34 @@ const division_one = () => {
 const calculateModulo = () => {
     box = document.getElementById("box");
     equal = document.getElementById("equal_sign").value;
-    let squareNum = box.innerText;
-    squareNum = squareNum.replace(/%/g, '/100');
-    box.innerText = `${this.eval(squareNum)  }%`;
+    let square_num = box.innerText;
+    square_num = square_num.replace(/%/g, '/100');
+    equal = this.eval(square_num) + '%';
+    box.innerText = equal;
 
     // let dividend;
     // let divisor;
     // box.innerText = dividend % divisor;
     numbers.push(box.innerText);
 }
-calculateModulo();
 
+// function to calculate pi of the number currently on screen
 const calculatePi = () => {
     box = document.getElementById("box");
-    let squareNum = 3.141592653589793 * (box.innerText);
-    box.innerText = squareNum;
-    numbers.push(squareNum);
+    let square_num = 3.141592653589793 * (box.innerText);
+    box.innerText = square_num;
+    numbers.push(box.innerText);
 }
 
-calculatePi();
-
+// function to calculate exponent of the number currently on screen
 const exponential = () => {
     box = document.getElementById("box");
-    const squareNum = Math.exp(box.innerText);
-    box.innerText = squareNum;
-    numbers.push(squareNum);
+    let square_num = Math.exp(box.innerText);
+    box.innerText = square_num;
+    numbers.push(box.innerText);
 }
 
-// const facto = () => {
-//     box = document.getElementById("box");
-//     if(box.innerText === "0" || box.innerText === "1") return "1"
-//     else{
-//         let temp = parseInt(box.innerText);
-//         let sum = 1;
-//         while(temp!==0){
-//             sum *= temp;
-//             temp-=1;
-//         }
-//         box.innerText = sum;
-//     }   
-//     numbers.push(box.innerText)
-// }
-
+// function to calculate factorial of the number currently on screen
 const facto = () => {
     box = document.getElementById("box");
     if(box.innerText === "0" || box.innerText === "1") return "1"
@@ -380,8 +368,8 @@ const facto = () => {
     }
     numbers.push(box.innerText)
 }
-facto();
 
+// function to calculate log of the number currently on screen
 const calculateLog = () => {
     box = document.getElementById("box");
     let square_num = Math.log10(box.innerText);
@@ -391,93 +379,105 @@ const calculateLog = () => {
 
 // const raisTo = () => {
 //     box = document.getElementById("box");
-//     let squareNum =Math.pow(box.innerText, box.innerText);
-//     box.innerText = squareNum;
-//     numbers.push(squareNum);
+//     let square_num =Math.pow(box.innerText, box.innerText);
+//     box.innerText = square_num;
+//     numbers.push(square_num);
 // }
 
+// function to calculate x power of y of the number currently on screen
 const raisTo = () => {
     box = document.getElementById("box");
-    const expression = box.innerText.replace(/\^/g, '**');
-    const res = this.eval(expression);
-    box.innerText = res;
+    equal = document.getElementById("equal_sign");
+    let square_num = box.innerText;
+    square_num = square_num.replace(/%/g, '**');
+    equal = this.eval(square_num) + '**';
+    let res = Math.pow(equal);
+    // let res = Math.pow(expression);
+    // box.innerText = res;
+    numbers.push(res);
+}
+
+// function to calculate absolute of the number currently on screen
+const absolute = () => {
+    box = document.getElementById("box");
+    let square_num = Math.abs(box.innerText);
+    box.innerText = square_num;
+    numbers.push(square_num);
+}
+
+// function to calculate sine of the number currently on screen
+const sineOperation = () => {
+    box = document.getElementById("box");
+    let square_num = Math.sin(box.innerText);
+    box.innerText = square_num;
+    numbers.push(box.innerText);
+    console.log("hello");
+}
+
+// function to calculate cosine of the number currently on screen
+const cosineOperation = () => {
+    box = document.getElementById("box");
+    let square_num = Math.cos(box.innerText);
+    box.innerText = square_num;
+    numbers.push(square_num);
+}
+
+// function to calculate tangent of the number currently on screen
+const tanOperation = () => {
+    box = document.getElementById("box");
+    let square_num = Math.tan(box.innerText);
+    box.innerText = square_num;
+    numbers.push(square_num);
+}
+
+// function to calculate power of ten of the number currently on screen
+const raisToTen = () => {
+    box = document.getElementById("box");
+    let square_num = Math.pow(10, box.innerText);
+    box.innerText = square_num;
+    numbers.push(square_num);
+}
+
+// function to calculate natural log of the number currently on screen
+const lnOperation = () => {
+    box = document.getElementById("box");
+    let square_num = Math.log(box.innerText);
+    box.innerText = square_num;
     numbers.push(box.innerText);
 }
 
-document.querySelector('.equal_sign').addEventListener('click', raisTo);
 
-const absolute = () => {
-    box = document.getElementById("box");
-    let squareNum = Math.abs(box.innerText);
-    box.innerText = squareNum;
-    numbers.push(squareNum);
-}
-
-const sineOperation = () => {
-    box = document.getElementById("box");
-    let squareNum = Math.sin(box.innerText);
-    box.innerText = squareNum;
-    numbers.push(squareNum);
-}
-
-const cosineOperation = () => {
-    box = document.getElementById("box");
-    let squareNum = Math.cos(box.innerText);
-    box.innerText = squareNum;
-    numbers.push(squareNum);
-}
-
-const tenOperation = () => {
-    box = document.getElementById("box");
-    let squareNum = Math.tan(box.innerText);
-    box.innerText = squareNum;
-    numbers.push(squareNum);
-}
-
-const raisToTen = () => {
-    box = document.getElementById("box");
-    let squareNum =Math.pow(10, box.innerText);
-    box.innerText = squareNum;
-    numbers.push(squareNum);
-}
-
-const lnOperation = () => {
-    box = document.getElementById("box");
-    let squareNum = Math.log(box.innerText);
-    box.innerText = squareNum;
-    numbers.push(squareNum);
-}
 
 // function to calculate the percentage of a number
-let calculate_percentage = () => {
+const calculate_percentage = () => {
     let elements = document.getElementsByClassName("operator");
     box = document.getElementById("box");
 
-    if (numbers.length > 0 && typeof last_operator !== "undefined"){
-        if (last_operator === "+" || last_operator === "-"){
+    if (numbers.length > 0 && typeof last_operator != "undefined"){
+        if (last_operator == "+" || last_operator == "-"){
             box.innerText = numbers*box.innerText/100;
         }
         else {
-            box.innerText /=100;
+            box.innerText = box.innerText/100;
         }
     }
     else {
-        box.innerText /=100;
+        box.innerText = box.innerText/100;
     }
-    numbers = []
+    numbers = [];
     numbers.push(box.innerText);
 
     // deselect operator if any selected
-    for (let i=0; i<elements.length; i+=1){
+    for (let i=0; i<elements.length; i++){
         elements[i].style.backgroundColor  = "#e68a00";
     }
 }
 
 // function to clear last number typed into the display
-let clear_entry = () => {
+const clear_entry = () => {
     box = document.getElementById("box");
 
-    if (numbers.length > 0 && typeof last_operator !== "undefined"){
+    if (numbers.length > 0 && typeof last_operator != "undefined"){
         box.innerText = 0;
         let temp = numbers[0];
         numbers = [];
@@ -487,38 +487,39 @@ let clear_entry = () => {
 }
 
 
+
 // function to capture keydown events
 const keyPressed = (e) => {
     e.preventDefault()
-     dot = document.getElementById("dot").value;
-     equal = document.getElementById("equal_sign").value;
+    let dot = document.getElementById("dot").value;
+    let equal = document.getElementById("equal_sign").value;
 
-    if (e.key === "Delete"){
+    if (e.key == "Delete"){
         button_clear();
         return;
     }
 
-    const isNumber = Number.isFinite(e.key);
+    let isNumber = isFinite(e.key);
     let enterPress;
     let dotPress;
     let commaPress = false;
 
-    if (e.key === "Enter"){
+    if (e.key == "Enter"){
         enterPress = equal;
     }
-    if (e.key === "."){
+    if (e.key == "."){
         dotPress = dot;
     }
-    if (e.key === ","){
+    if (e.key == ","){
         commaPress = true;
     }
     
-    if (isNumber || operators.includes(e.key) || e.key === "Enter" || e.key === dotPress || 
-        commaPress || e.key === "Backspace"){
-        if (e.key === "Enter"){
+    if (isNumber || operators.includes(e.key) || e.key == "Enter" || e.key == dotPress || 
+        commaPress || e.key == "Backspace"){
+        if (e.key == "Enter"){
             buttonNumber(enterPress);
         }
-        else if (e.key === "Backspace"){
+        else if (e.key == "Backspace"){
             document.getElementById("backspace_btn").style.backgroundColor  = "#999999";
             backspace_remove();
         }
@@ -535,7 +536,7 @@ const keyPressed = (e) => {
 const keyReleased = (e) => {
     e.preventDefault();
     // set the color of the backspace button back to its original
-    if (e.key === "Backspace"){
+    if (e.key == "Backspace"){
         document.getElementById("backspace_btn").style.backgroundColor  = "#666666";
     }
 }
